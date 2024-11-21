@@ -1,5 +1,4 @@
 import pickle
-import traceback
 from common import *
 from urna import Urna_App
 

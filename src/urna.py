@@ -1,11 +1,11 @@
-from tkinter import *
+import tkinter
 from typing import Union
 
 FONT1 = "Arial 15 bold"
 FONT2 = "Arial 11 bold"
 
 
-class Urna_App(Tk):
+class Urna_App(tkinter.Tk):
     def __init__(self, eleitores, candidatos):
         super().__init__()
 
@@ -19,7 +19,7 @@ class Urna_App(Tk):
         self.geometry('780x500')
         self.configure(background="#D9D9D9")
 
-        tela = Frame(self, highlightbackground="black", highlightthickness=2)
+        tela = tkinter.Frame(self, highlightbackground="black", highlightthickness=2)
         tela.pack(side="left", padx=(15, 0), pady=15)
         Teclado(self)
 
@@ -117,120 +117,120 @@ class Urna_App(Tk):
             self.gui.candidato_display.config(text="Branco")
 
 
-class Titulo_GUI(Frame):
+class Titulo_GUI(tkinter.Frame):
     def __init__(self, parent, controller):
-        Frame.__init__(self, parent)
+        tkinter.Frame.__init__(self, parent)
 
-        self.titulo_entry = StringVar()
+        self.titulo_entry = tkinter.StringVar()
         self.configure(background="#E8E8E8")
 
-        self.eleitor_display = Label(self, text="Insira um Titulo de Eleitor", font=FONT1, background="#E8E8E8")
+        self.eleitor_display = tkinter.Label(self, text="Insira um Titulo de Eleitor", font=FONT1, background="#E8E8E8")
         self.eleitor_display.pack(side="top", pady=(85, 35))
-        titulo = Entry(self, font=FONT1, textvariable=self.titulo_entry, justify="center", state="disabled",
-                       disabledforeground="black")
+        titulo = tkinter.Entry(self, font=FONT1, textvariable=self.titulo_entry, justify="center", state="disabled",
+                               disabledforeground="black")
         titulo.pack()
 
 
-class Voto_GUI(Frame):
+class Voto_GUI(tkinter.Frame):
     def __init__(self, parent, controller):
-        Frame.__init__(self, parent)
+        tkinter.Frame.__init__(self, parent)
 
-        self.dgt1 = StringVar()
-        self.dgt2 = StringVar()
+        self.dgt1 = tkinter.StringVar()
+        self.dgt2 = tkinter.StringVar()
 
         self.configure(background="#E8E8E8")
 
-        frame_nome = Frame(self, background="#E8E8E8")
+        frame_nome = tkinter.Frame(self, background="#E8E8E8")
         frame_nome.pack(side="top")
 
-        self.candidato_display = Label(frame_nome, font=FONT1, background="#E8E8E8")
+        self.candidato_display = tkinter.Label(frame_nome, font=FONT1, background="#E8E8E8")
         self.candidato_display.grid(row=1, column=0, pady=(75, 0), padx=100)
 
-        voto_entry = Frame(self, background="#E8E8E8")
+        voto_entry = tkinter.Frame(self, background="#E8E8E8")
         voto_entry.pack(side="bottom")
 
-        digit1_entry = Entry(voto_entry, width=2, font=FONT1, textvariable=self.dgt1, justify="center",
-                             state="disabled", disabledforeground="black")
+        digit1_entry = tkinter.Entry(voto_entry, width=2, font=FONT1, textvariable=self.dgt1, justify="center",
+                                     state="disabled", disabledforeground="black")
         digit1_entry.pack(side="left", padx=(200, 5), pady=(25, 100))
-        digit2_entry = Entry(voto_entry, width=2, font=FONT1, textvariable=self.dgt2, justify="center",
-                             state="disabled", disabledforeground="black")
+        digit2_entry = tkinter.Entry(voto_entry, width=2, font=FONT1, textvariable=self.dgt2, justify="center",
+                                     state="disabled", disabledforeground="black")
         digit2_entry.pack(side="right", padx=(0, 200), pady=(25, 100))
 
 
-class Erro_GUI(Frame):
+class Erro_GUI(tkinter.Frame):
     def __init__(self, parent, controller):
-        Frame.__init__(self, parent)
+        tkinter.Frame.__init__(self, parent)
 
         self.configure(background="#E8E8E8")
 
-        error_msg1 = Label(self, text="Titulo digitado invalido!!!", font=FONT1, background="#E8E8E8")
+        error_msg1 = tkinter.Label(self, text="Titulo digitado invalido!!!", font=FONT1, background="#E8E8E8")
         error_msg1.pack(pady=(100, 5))
-        error_msg2 = Label(self, text="Pressione 'Confirma' para retornar a tela anterior", font="Arial 12",
-                           background="#E8E8E8")
+        error_msg2 = tkinter.Label(self, text="Pressione 'Confirma' para retornar a tela anterior", font="Arial 12",
+                                   background="#E8E8E8")
         error_msg2.pack()
 
 
-class Teclado(Frame):
+class Teclado(tkinter.Frame):
     def __init__(self, parent):
         super().__init__(parent)
 
         self.pack(side="right", padx=15)
         self.configure(background="#D9D9D9")
 
-        num_keys = Frame(self, background="#D9D9D9")
+        num_keys = tkinter.Frame(self, background="#D9D9D9")
         num_keys.pack(side="top", padx=(0, 12))
 
-        btn1 = Button(num_keys, text="1", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("1"))
+        btn1 = tkinter.Button(num_keys, text="1", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("1"))
         btn1.grid(row=10, column=10)
 
-        btn2 = Button(num_keys, text="2", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("2"))
+        btn2 = tkinter.Button(num_keys, text="2", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("2"))
         btn2.grid(row=10, column=11, padx=5)
 
-        btn3 = Button(num_keys, text="3", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("3"))
+        btn3 = tkinter.Button(num_keys, text="3", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("3"))
         btn3.grid(row=10, column=12)
 
-        btn4 = Button(num_keys, text="4", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("4"))
+        btn4 = tkinter.Button(num_keys, text="4", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("4"))
         btn4.grid(row=11, column=10, pady=5)
 
-        btn5 = Button(num_keys, text="5", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("5"))
+        btn5 = tkinter.Button(num_keys, text="5", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("5"))
         btn5.grid(row=11, column=11, padx=5, pady=5)
 
-        btn6 = Button(num_keys, text="6", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("6"))
+        btn6 = tkinter.Button(num_keys, text="6", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("6"))
         btn6.grid(row=11, column=12, pady=5)
 
-        btn7 = Button(num_keys, text="7", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("7"))
+        btn7 = tkinter.Button(num_keys, text="7", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("7"))
         btn7.grid(row=12, column=10)
 
-        btn8 = Button(num_keys, text="8", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("8"))
+        btn8 = tkinter.Button(num_keys, text="8", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("8"))
         btn8.grid(row=12, column=11, padx=5)
 
-        btn9 = Button(num_keys, text="9", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("9"))
+        btn9 = tkinter.Button(num_keys, text="9", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("9"))
         btn9.grid(row=12, column=12)
 
-        btn0 = Button(num_keys, text="0", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
-                      activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("0"))
+        btn0 = tkinter.Button(num_keys, text="0", foreground="#ffffff", background="#211C18", font=FONT2, justify="center",
+                              activebackground="#211C18", activeforeground="#ffffff", command=lambda: parent.press("0"))
         btn0.grid(row=14, column=11, pady=5)
 
-        action_keys = Frame(self, background="#D9D9D9")
+        action_keys = tkinter.Frame(self, background="#D9D9D9")
         action_keys.pack(side="bottom")
 
-        btnBranco = Button(action_keys, text="BRANCO", background="#ffffff", font=FONT2, justify="center",
-                           activebackground="#ffffff", activeforeground="#000000", command=lambda: parent.branco())
+        btnBranco = tkinter.Button(action_keys, text="BRANCO", background="#ffffff", font=FONT2, justify="center",
+                                   activebackground="#ffffff", activeforeground="#000000", command=lambda: parent.branco())
         btnBranco.grid(row=15, column=10, padx=(5, 0))
 
-        btnCorrige = Button(action_keys, text="CORRIGE", background="#DE5B0D", font=FONT2, justify="center",
-                            activebackground="#DE5B0D", activeforeground="#000000", command=lambda: parent.corrige())
+        btnCorrige = tkinter.Button(action_keys, text="CORRIGE", background="#DE5B0D", font=FONT2, justify="center",
+                                    activebackground="#DE5B0D", activeforeground="#000000", command=lambda: parent.corrige())
         btnCorrige.grid(row=15, column=11, padx=5)
 
-        btnConfirma = Button(action_keys, text="CONFIRMA", background="#6B8C42", font=FONT2, justify="center",
-                             activebackground="#6B8C42", activeforeground="#000000", command=lambda: parent.confirma())
+        btnConfirma = tkinter.Button(action_keys, text="CONFIRMA", background="#6B8C42", font=FONT2, justify="center",
+                                     activebackground="#6B8C42", activeforeground="#000000", command=lambda: parent.confirma())
         btnConfirma.grid(row=15, column=12, padx=(0, 5))
