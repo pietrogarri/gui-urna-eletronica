@@ -1,4 +1,4 @@
-#GUI de Urna Eletrônica
+# GUI de Urna Eletrônica
 Aluno: Pietro Motta Garri
 
 Este projeto implementa um sistema de urna eletrônica para gerenciar e registrar informações relacionadas a eleitores e candidatos em um processo de votação. Ele combina a interface gráfica com funcionalidades de gerenciamento de dados, utilizando persistência em arquivos para armazenar e recuperar informações.
