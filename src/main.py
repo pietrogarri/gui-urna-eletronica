@@ -1,6 +1,6 @@
 import pickle
 from common import *
-from urna import Urna_App
+from urna import UrnaApp
 
 FILE_ELEITORES = 'eleitores.pkl'
 FILE_CANDIDATOS = 'candidatos.pkl'
@@ -24,12 +24,12 @@ def inserir_eleitor(eleitores):
         raise Exception("Titulo já existente!")
 
     nome = input("Digite o nome: ")
-    RG = input("Digite o RG: ")
-    CPF = input("Digite o CPF: ")
+    rg = input("Digite o rg: ")
+    cpf = input("Digite o cpf: ")
     secao = int(input("Digite a secao: "))
     zona = int(input("Digite a zona: "))
 
-    eleitor = Eleitor(nome, RG, CPF, titulo, secao, zona)
+    eleitor = Eleitor(nome, rg, cpf, titulo, secao, zona)
     eleitores[eleitor.get_titulo()] = eleitor
 
     with open(FILE_ELEITORES, 'wb') as arquivo:
@@ -64,10 +64,10 @@ def inserir_candidato(candidatos):
         raise Exception("Candidato já existente!")
 
     nome = input("Digite o nome: ")
-    RG = input("Digite o RG: ")
-    CPF = input("Digite o CPF: ")
+    rg = input("Digite o rg: ")
+    cpf = input("Digite o cpf: ")
 
-    candidato = Candidato(nome, RG, CPF, numero)
+    candidato = Candidato(nome, rg, cpf, numero)
     candidatos[candidato.get_numero()] = candidato
 
     with open(FILE_CANDIDATOS, 'wb') as arquivo:
@@ -81,7 +81,7 @@ def listar_candidatos(candidatos):
         print(candidato)
 
 if __name__ == "__main__":
-    eleitores = {} #dicionário a chave será o titulo
+    eleitores = {} # Dicionário a chave será = titulo
     try:
         print("Carregando arquivo de eleitores ...")
 
@@ -91,7 +91,7 @@ if __name__ == "__main__":
         print(fnfe)
         print("Arquivo nao encontrado, nenhum eleitor carregado!")
 
-    candidatos = {}  # dicionário a chave será o titulo
+    candidatos = {}  # Dicionário a chave será = titulo
     try:
         print("Carregando arquivo de candidatos ...")
 
@@ -115,11 +115,10 @@ if __name__ == "__main__":
             elif opcao == 4:
                 listar_candidatos(candidatos)
             elif opcao == 5:
-                app = Urna_App(eleitores, candidatos)
+                app = UrnaApp(eleitores, candidatos)
                 app.mainloop()
             elif opcao == 6:
                 print("Saindo!")
                 break
         except Exception as e:
-            #traceback.print_exc()
             print(e)
