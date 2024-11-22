@@ -24,8 +24,8 @@ def inserir_eleitor(eleitores):
         raise Exception("Titulo já existente!")
 
     nome = input("Digite o nome: ")
-    rg = input("Digite o rg: ")
-    cpf = input("Digite o cpf: ")
+    rg = input("Digite o RG: ")
+    cpf = input("Digite o CPF: ")
     secao = int(input("Digite a secao: "))
     zona = int(input("Digite a zona: "))
 
@@ -64,8 +64,8 @@ def inserir_candidato(candidatos):
         raise Exception("Candidato já existente!")
 
     nome = input("Digite o nome: ")
-    rg = input("Digite o rg: ")
-    cpf = input("Digite o cpf: ")
+    rg = input("Digite o RG: ")
+    cpf = input("Digite o CPF: ")
 
     candidato = Candidato(nome, rg, cpf, numero)
     candidatos[candidato.get_numero()] = candidato
